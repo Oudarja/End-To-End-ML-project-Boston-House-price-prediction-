@@ -21,11 +21,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build Docker Image
-        run: docker buildx build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/house-prediction:latest .
-
-      - name: Push to Docker Hub
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/house-prediction:latest
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/house-prediction:latest
 
       - name: Logout from Docker Hub
         run: docker logout
