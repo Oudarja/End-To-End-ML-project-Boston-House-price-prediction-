@@ -3,14 +3,16 @@
 # docker hub
 FROM python:3.9-slim
 
-# set working directory in the container
-# copy all the files from current directory 
-# to /app in the container
-COPY . /app
 
 # set working directory to /app
 # inside the container
 WORKDIR /app
+
+
+# set working directory in the container
+# copy all the files from current directory 
+# to /app in the container
+COPY . /app
 
 RUN pip install -r requirements.txt
 # expose port 8000 for the app
