@@ -23,5 +23,5 @@ EXPOSE 8000
 # docker run -p 8000:8000 your_image
 # Then you can access it from your local machine at:
 # http://localhost:8000
-
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# run app instance from app module
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
